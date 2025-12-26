@@ -83,9 +83,32 @@
     const nav = document.querySelector('.nav');
     
     if (mobileMenuToggle && nav) {
-        mobileMenuToggle.addEventListener('click', function() {
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
             nav.classList.toggle('mobile-nav-open');
             mobileMenuToggle.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('mobile-nav-open') ? 'hidden' : '';
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (nav.classList.contains('mobile-nav-open') && 
+                !nav.contains(e.target) && 
+                !mobileMenuToggle.contains(e.target)) {
+                nav.classList.remove('mobile-nav-open');
+                mobileMenuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close menu when clicking a nav link
+        const navLinks = nav.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                nav.classList.remove('mobile-nav-open');
+                mobileMenuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            });
         });
     }
 })();

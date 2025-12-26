@@ -21,12 +21,27 @@ body {
     background-color: var(--off-white);
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Improve touch targets for mobile */
+a, button {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+/* Mobile-first improvements */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
 }
 
 /* Header Styles */
@@ -90,6 +105,8 @@ body {
     flex-direction: column;
     gap: 4px;
     cursor: pointer;
+    z-index: 1001;
+    padding: 0.5rem;
 }
 
 .mobile-menu-toggle span {
@@ -97,6 +114,33 @@ body {
     height: 2px;
     background-color: var(--primary-black);
     transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.nav.mobile-nav-open {
+    display: flex;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    flex-direction: column;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    gap: 1.5rem;
+    border-top: 2px solid var(--primary-black);
 }
 
 /* Pre-Booking Banner */
@@ -236,56 +280,6 @@ body {
     margin-bottom: 2.5rem;
 }
 
-.hero-visitor-counter {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    animation: fadeInUp 0.8s ease-out 0.3s both;
-}
-
-.visitor-badge {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background-color: var(--white);
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    border: 2px solid var(--primary-black);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.visitor-badge:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.visitor-icon {
-    font-size: 2rem;
-    animation: bounce 2s ease-in-out infinite;
-}
-
-.visitor-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.visitor-label {
-    font-size: 0.85rem;
-    color: var(--text-gray);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.visitor-number {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary-black);
-    font-family: 'Playfair Display', serif;
-    line-height: 1;
-}
 
 @keyframes fadeInUp {
     from {
@@ -1200,22 +1194,6 @@ body {
         max-width: 300px;
     }
 
-    .visitor-badge {
-        padding: 0.8rem 1.5rem;
-        gap: 0.8rem;
-    }
-
-    .visitor-icon {
-        font-size: 1.5rem;
-    }
-
-    .visitor-number {
-        font-size: 1.5rem;
-    }
-
-    .visitor-label {
-        font-size: 0.75rem;
-    }
 
     .map-container {
         height: 350px;
@@ -1247,22 +1225,125 @@ body {
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .header {
+        padding: 0.6rem 0;
+    }
+
+    .logo-img {
+        height: 45px;
+    }
+
+    .hero {
+        padding: 2rem 0;
+    }
+
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.75rem;
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .hero-tagline {
+        font-size: 0.9rem;
     }
 
     .page-title {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 
-    .container {
-        padding: 0 15px;
+    .page-subtitle {
+        font-size: 0.95rem;
     }
+
+    .pre-booking-label {
+        font-size: 0.8rem;
+    }
+
+    .pre-booking-contacts {
+        font-size: 0.75rem;
+    }
+
+    .countdown-item {
+        min-width: 55px;
+        padding: 0.8rem 0.5rem;
+    }
+
+    .countdown-number {
+        font-size: 1.5rem;
+    }
+
+    .countdown-label {
+        font-size: 0.65rem;
+    }
+
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        max-width: 100%;
+    }
+
 
     .event-card,
     .cta-card,
-    .map-card {
-        padding: 2rem 1.5rem;
+    .map-card,
+    .gift-finder-card,
+    .reel-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .feature-card,
+    .product-card,
+    .vm-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .story-text h2,
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .contact-info-card,
+    .contact-message-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .map-container {
+        height: 250px;
+    }
+
+    .map-container iframe {
+        height: 250px;
+    }
+
+    .scroll-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 15px;
+        right: 15px;
+        font-size: 1.2rem;
+    }
+
+    .loader-logo {
+        width: 80px;
+    }
+
+    .loader-text {
+        font-size: 1rem;
+    }
+
+    .footer-logo-img {
+        height: 40px;
+    }
+
+    .footer-section h4 {
+        font-size: 1.1rem;
     }
 }
 
@@ -1670,39 +1751,4 @@ body {
     }
 }
 
-/* Responsive Styles for New Features */
-@media (max-width: 768px) {
-    .countdown-timer {
-        gap: 1rem;
-    }
-
-    .countdown-item {
-        min-width: 70px;
-        padding: 1rem 0.8rem;
-    }
-
-    .countdown-number {
-        font-size: 2rem;
-    }
-
-    .gift-options {
-        grid-template-columns: 1fr;
-    }
-
-    .scroll-to-top {
-        width: 45px;
-        height: 45px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 1.3rem;
-    }
-
-    .loader-logo {
-        width: 100px;
-    }
-
-    .loader-text {
-        font-size: 1.2rem;
-    }
-}
 
