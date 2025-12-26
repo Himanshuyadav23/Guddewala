@@ -99,6 +99,93 @@ body {
     transition: all 0.3s ease;
 }
 
+/* Pre-Booking Banner */
+.pre-booking-banner {
+    background: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-black) 100%);
+    color: var(--white);
+    padding: 1rem 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pre-booking-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    animation: slideIn 0.5s ease-out;
+}
+
+.pre-booking-icon {
+    font-size: 1.5rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.pre-booking-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    text-align: center;
+}
+
+.pre-booking-label {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.pre-booking-contacts {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.pre-booking-contacts a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.pre-booking-contacts a:hover {
+    color: #ffd700;
+    border-bottom-color: #ffd700;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+    }
+}
+
 /* Hero Section */
 .hero {
     min-height: 90vh;
@@ -146,6 +233,78 @@ body {
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.hero-visitor-counter {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.visitor-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--primary-black);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.visitor-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.visitor-icon {
+    font-size: 2rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.visitor-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.visitor-label {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.visitor-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-black);
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
 .btn {
@@ -984,6 +1143,23 @@ body {
         display: flex;
     }
 
+    .pre-booking-content {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 0 1rem;
+    }
+
+    .pre-booking-label {
+        font-size: 0.9rem;
+    }
+
+    .pre-booking-contacts {
+        font-size: 0.85rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
     .hero-title {
         font-size: 2.5rem;
     }
@@ -1022,6 +1198,23 @@ body {
     .btn {
         width: 100%;
         max-width: 300px;
+    }
+
+    .visitor-badge {
+        padding: 0.8rem 1.5rem;
+        gap: 0.8rem;
+    }
+
+    .visitor-icon {
+        font-size: 1.5rem;
+    }
+
+    .visitor-number {
+        font-size: 1.5rem;
+    }
+
+    .visitor-label {
+        font-size: 0.75rem;
     }
 
     .map-container {
@@ -1070,6 +1263,446 @@ body {
     .cta-card,
     .map-card {
         padding: 2rem 1.5rem;
+    }
+}
+
+/* Loading Animation */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--off-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.loader-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1.5rem;
+    animation: logoPulse 2s ease-in-out infinite;
+}
+
+.loader-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--primary-black);
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--light-gray);
+    border-top-color: var(--primary-black);
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes logoPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Countdown Timer */
+.countdown-container {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.countdown-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-black);
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    background-color: var(--white);
+    padding: 1.5rem 1rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    min-width: 80px;
+    border: 2px solid var(--primary-black);
+    transition: transform 0.3s ease;
+}
+
+.countdown-item:hover {
+    transform: translateY(-5px);
+}
+
+.countdown-number {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-black);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.countdown-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-black);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.scroll-to-top.visible {
+    display: flex;
+}
+
+.scroll-to-top:hover {
+    background-color: var(--secondary-black);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Gift Finder Section */
+.gift-finder-section {
+    padding: 5rem 0;
+    background-color: var(--off-white);
+}
+
+.gift-finder-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.gift-finder-card {
+    background-color: var(--white);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.gift-finder-question h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--primary-black);
+}
+
+.gift-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.gift-option-btn {
+    padding: 1.5rem;
+    background-color: var(--off-white);
+    border: 2px solid var(--primary-black);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-black);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.gift-option-btn:hover {
+    background-color: var(--primary-black);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.gift-result {
+    animation: fadeIn 0.5s ease;
+}
+
+.gift-result-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 1s ease infinite;
+}
+
+.gift-result h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-black);
+}
+
+.gift-result p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Instagram Reels Section */
+.instagram-reels-section {
+    padding: 5rem 0;
+    background-color: var(--white);
+}
+
+.reels-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+    min-height: 200px;
+}
+
+.reels-loading {
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    padding: 3rem;
+    grid-column: 1 / -1;
+}
+
+.reel-embed-wrapper {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reel-embed-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.reel-embed-wrapper iframe {
+    width: 100%;
+    min-height: 600px;
+    display: block;
+}
+
+.reels-fallback {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.reel-card {
+    background-color: var(--off-white);
+    padding: 2.5rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.reel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-black);
+}
+
+.reel-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.reel-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-black);
+}
+
+.reel-card p {
+    color: var(--text-gray);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.reels-placeholder {
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    padding: 3rem;
+    background-color: var(--off-white);
+    border-radius: 10px;
+    grid-column: 1 / -1;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 2rem;
+    background-color: var(--primary-black);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-black);
+}
+
+.social-btn:hover {
+    background-color: transparent;
+    color: var(--primary-black);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.social-icon {
+    font-size: 1.5rem;
+}
+
+.instagram-btn {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    border: none;
+    color: var(--white);
+}
+
+.instagram-btn:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    opacity: 0.9;
+    color: var(--white);
+}
+
+/* Easter Egg Styles */
+.easter-egg-active {
+    animation: shake 0.5s ease infinite;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px) rotate(-5deg); }
+    75% { transform: translateX(10px) rotate(5deg); }
+}
+
+.teddy-rain {
+    position: fixed;
+    top: -50px;
+    font-size: 2rem;
+    animation: fall 3s linear infinite;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Responsive Styles for New Features */
+@media (max-width: 768px) {
+    .countdown-timer {
+        gap: 1rem;
+    }
+
+    .countdown-item {
+        min-width: 70px;
+        padding: 1rem 0.8rem;
+    }
+
+    .countdown-number {
+        font-size: 2rem;
+    }
+
+    .gift-options {
+        grid-template-columns: 1fr;
+    }
+
+    .scroll-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.3rem;
+    }
+
+    .loader-logo {
+        width: 100px;
+    }
+
+    .loader-text {
+        font-size: 1.2rem;
     }
 }
 

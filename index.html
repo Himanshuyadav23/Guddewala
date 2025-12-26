@@ -13,6 +13,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <img src="IMG-20251217-WA0095.jpg" alt="Guddewala Logo" class="loader-logo">
+            <div class="loader-text">Where Hugs Come Home</div>
+            <div class="loader-spinner"></div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -34,6 +43,20 @@
         </div>
     </header>
 
+    <!-- Pre-Booking Banner -->
+    <section class="pre-booking-banner">
+        <div class="pre-booking-content">
+            <div class="pre-booking-icon">📞</div>
+            <div class="pre-booking-text">
+                <span class="pre-booking-label">Pre-Booking Available Now!</span>
+                <span class="pre-booking-contacts">
+                    Contact: Parth Upadhayay - <a href="tel:7970042309">7970042309</a> | Malhar Jagtap - <a href="tel:8109178933">8109178933</a>
+                </span>
+            </div>
+            <div class="pre-booking-icon">📞</div>
+        </div>
+    </section>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -44,12 +67,103 @@
                 <a href="about.html" class="btn btn-primary">Our Story</a>
                 <a href="products.html" class="btn btn-secondary">Explore</a>
             </div>
+            <div class="hero-visitor-counter">
+                <div class="visitor-badge">
+                    <span class="visitor-icon">👥</span>
+                    <div class="visitor-info">
+                        <span class="visitor-label">Total Visitors</span>
+                        <span class="visitor-number" id="heroVisitorCount">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown-container">
+                <h3 class="countdown-title">Event Starts In</h3>
+                <div class="countdown-timer" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="hero-visual">
             <div class="floating-elements">
                 <div class="floating-teddy teddy-1">🧸</div>
                 <div class="floating-teddy teddy-2">🧸</div>
                 <div class="floating-teddy teddy-3">🧸</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift Finder Section -->
+    <section class="gift-finder-section">
+        <div class="container">
+            <h2 class="section-title">Find Your Perfect Gift</h2>
+            <p class="section-subtitle">Answer a few questions to find the ideal cuddle partner</p>
+            <div class="gift-finder-container">
+                <div class="gift-finder-card" id="giftFinder">
+                    <div class="gift-finder-question" id="giftQuestion">
+                        <h3>Who is this gift for?</h3>
+                        <div class="gift-options">
+                            <button class="gift-option-btn" data-option="student">Student (Exam Luck)</button>
+                            <button class="gift-option-btn" data-option="friend">Friend (Peace Offering)</button>
+                            <button class="gift-option-btn" data-option="self">Myself (Stress Relief)</button>
+                            <button class="gift-option-btn" data-option="child">Child (Nostalgia)</button>
+                        </div>
+                    </div>
+                    <div class="gift-result" id="giftResult" style="display: none;">
+                        <div class="gift-result-icon">🎁</div>
+                        <h3 id="resultTitle"></h3>
+                        <p id="resultDescription"></p>
+                        <button class="btn btn-primary" id="resetFinder">Find Another Gift</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Reels Section -->
+    <section class="instagram-reels-section">
+        <div class="container">
+            <h2 class="section-title">Follow Our Journey</h2>
+            <p class="section-subtitle">Check out our latest reels on Instagram</p>
+            <div class="reels-container" id="reelsContainer">
+                <!-- Instagram reels will be embedded here -->
+                <div class="reels-loading">Loading reels...</div>
+            </div>
+            <div class="reels-fallback" style="display: none;">
+                <div class="reel-card">
+                    <div class="reel-icon">🎬</div>
+                    <h3>Check Out Our Reels</h3>
+                    <p>Visit our Instagram to see our latest reels and updates!</p>
+                    <a href="https://www.instagram.com/gudde.wala?igsh=cTRvdTcwM2t0MXF0" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Reels on Instagram</a>
+                </div>
+                <div class="reel-card">
+                    <div class="reel-icon">📱</div>
+                    <h3>Follow Our Journey</h3>
+                    <p>Get behind-the-scenes content and see our collection in action!</p>
+                    <a href="https://www.instagram.com/gudde.wala?igsh=cTRvdTcwM2t0MXF0" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Follow @gudde.wala</a>
+                </div>
+            </div>
+            <div class="social-buttons">
+                <a href="https://www.instagram.com/gudde.wala?igsh=cTRvdTcwM2t0MXF0" class="social-btn instagram-btn" id="instagramLink" target="_blank" rel="noopener noreferrer">
+                    <span class="social-icon">📷</span>
+                    <span>Follow Us on Instagram</span>
+                </a>
             </div>
         </div>
     </section>
@@ -138,6 +252,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <span>↑</span>
+    </button>
 
     <script src="script.js"></script>
 </body>
