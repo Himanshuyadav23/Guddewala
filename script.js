@@ -59,13 +59,39 @@
         }
         
         // Update all visitor count displays
-        const visitorCountElements = document.querySelectorAll('#visitorCount, #heroVisitorCount');
+        const visitorCountElements = document.querySelectorAll('#visitorCount, #heroVisitorCount, #giveawayVisitorCount');
         visitorCountElements.forEach(element => {
             if (element) {
                 const currentValue = parseInt(element.textContent) || 0;
                 animateCounter(element, currentValue, visitorCount);
             }
         });
+        
+        // Update giveaway progress if on giveaways page
+        updateGiveawayProgress(visitorCount);
+    }
+    
+    // Function to update giveaway progress
+    function updateGiveawayProgress(count) {
+        const progressFill = document.getElementById('progressFill');
+        const currentCount = document.getElementById('currentCount');
+        const giveawayStatus = document.getElementById('giveawayStatus');
+        const TARGET_COUNT = 1000;
+        
+        if (progressFill && currentCount) {
+            const percentage = Math.min((count / TARGET_COUNT) * 100, 100);
+            progressFill.style.width = percentage + '%';
+            currentCount.textContent = count.toLocaleString();
+            
+            if (giveawayStatus) {
+                if (count >= TARGET_COUNT) {
+                    giveawayStatus.innerHTML = '<p class="status-message winner">🎉 Congratulations! The 1000th visitor has been reached! Check your email or contact us to claim your prize!</p>';
+                } else {
+                    const remaining = TARGET_COUNT - count;
+                    giveawayStatus.innerHTML = `<p class="status-message">Only ${remaining.toLocaleString()} more visitors until someone wins a free teddy bear! 🧸</p>`;
+                }
+            }
+        }
     }
     
     // Run when DOM is ready

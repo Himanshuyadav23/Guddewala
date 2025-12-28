@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team - Guddewala | Where Hugs Come Home</title>
+    <title>Giveaways - Guddewala | Where Hugs Come Home</title>
     <link rel="icon" type="image/jpeg" href="IMG-20251217-WA0095.jpg">
     <link rel="shortcut icon" type="image/jpeg" href="IMG-20251217-WA0095.jpg">
     <link rel="apple-touch-icon" href="IMG-20251217-WA0095.jpg">
@@ -32,8 +32,8 @@
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="products.html" class="nav-link">Products</a>
-                <a href="team.html" class="nav-link active">Team</a>
-                <a href="giveaways.html" class="nav-link">Giveaways</a>
+                <a href="team.html" class="nav-link">Team</a>
+                <a href="giveaways.html" class="nav-link active">Giveaways</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
             <div class="mobile-menu-toggle">
@@ -44,79 +44,97 @@
         </div>
     </header>
 
-    <!-- Team Hero -->
+    <!-- Giveaways Hero -->
     <section class="page-hero">
         <div class="container">
-            <h1 class="page-title">Meet Team Aayudh</h1>
-            <p class="page-subtitle">The passionate minds behind Guddewala</p>
+            <h1 class="page-title">Giveaways</h1>
+            <p class="page-subtitle">Win Amazing Prizes!</p>
         </div>
     </section>
 
-    <!-- Team Photo Section -->
-    <section class="team-photo-section">
+    <!-- Visitor Counter Section -->
+    <section class="giveaway-counter-section">
         <div class="container">
-            <div class="team-photo-container">
-                <img src="IMG_7727.jpg" alt="Team Aayudh" class="team-photo">
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Introduction -->
-    <section class="team-intro-section">
-        <div class="container">
-            <div class="team-intro-card">
-                <h2>Our Story</h2>
-                <p>We are Team Aayudh, a dedicated group of students committed to bringing comfort, joy, and emotional connection to Innovision 2025-26. Our mission is simple yet powerful: to make every visitor feel at home with our collection of soft toys and warm service.</p>
-                <p>At Guddewala, we believe that soft toys are more than just products—they are companions, lucky charms, stress relievers, and reminders of simpler times. Each member of our team brings unique skills and passion to make this vision a reality.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Members Section -->
-    <section class="team-members-section">
-        <div class="container">
-            <div class="team-members-grid">
-                <!-- Team member cards will be added here -->
-                <!-- Example structure (you can duplicate and modify this):
-                <div class="team-member-card">
-                    <div class="team-member-image">
-                        <img src="team-member-1.jpg" alt="Team Member Name">
+            <div class="giveaway-counter-card">
+                <div class="counter-display">
+                    <h2>Total Visitors</h2>
+                    <div class="big-counter">
+                        <span id="giveawayVisitorCount">0</span>
                     </div>
-                    <div class="team-member-info">
-                        <h3>Member Name</h3>
-                        <p class="team-member-role">Role/Position</p>
-                        <p class="team-member-bio">Brief description about the team member and their contribution to Guddewala.</p>
-                    </div>
+                    <p class="counter-subtitle">Keep visiting to increase your chances!</p>
                 </div>
-                -->
             </div>
         </div>
     </section>
 
-    <!-- Team Values Section -->
-    <section class="team-values-section">
+    <!-- 1000th Visitor Giveaway -->
+    <section class="giveaway-section">
         <div class="container">
-            <h2 class="section-title">What Drives Us</h2>
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">💝</div>
-                    <h3>Emotional Connection</h3>
-                    <p>We understand the power of comfort and nostalgia that soft toys bring</p>
+            <div class="giveaway-card featured-giveaway">
+                <div class="giveaway-icon">🎁</div>
+                <h2>1000th Visitor Special</h2>
+                <div class="giveaway-prize">
+                    <span class="prize-emoji">🧸</span>
+                    <h3>Free Teddy Bear!</h3>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">🤝</div>
-                    <h3>Teamwork</h3>
-                    <p>Working together to create memorable experiences for our visitors</p>
+                <div class="giveaway-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p class="progress-text">
+                        <span id="currentCount">0</span> / 1000 visitors
+                    </p>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">✨</div>
-                    <h3>Excellence</h3>
-                    <p>Committed to delivering quality products and exceptional service</p>
+                <div class="giveaway-status" id="giveawayStatus">
+                    <p class="status-message">Be the 1000th visitor and win a free teddy bear!</p>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">😊</div>
-                    <h3>Joy</h3>
-                    <p>Spreading smiles and happiness, one hug at a time</p>
+                <div class="giveaway-tc">
+                    <h4>Terms & Conditions:</h4>
+                    <ul>
+                        <li>The 1000th unique visitor to our website will be eligible for a free teddy bear</li>
+                        <li>Winner will be notified via email or contact information provided</li>
+                        <li>Prize must be claimed at our stall during Innovision 2025-26 (10th & 11th January 2026)</li>
+                        <li>Valid ID proof required for verification</li>
+                        <li>One prize per person. No cash alternative</li>
+                        <li>Guddewala reserves the right to verify visitor count</li>
+                        <li>Decision of Guddewala team is final</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Reel Giveaway -->
+    <section class="giveaway-section">
+        <div class="container">
+            <div class="giveaway-card">
+                <div class="giveaway-icon">📱</div>
+                <h2>Instagram Reel Giveaway</h2>
+                <div class="giveaway-prize">
+                    <span class="prize-emoji">💰</span>
+                    <h3>10% Off on Your Purchase!</h3>
+                </div>
+                <p class="giveaway-description">
+                    Check out our Instagram reel for this exciting giveaway! The comment with the most likes wins 10% off on their purchase at our stall.
+                </p>
+                <div class="reel-giveaway-link">
+                    <a href="https://www.instagram.com/p/DSzELrCDNHh/" target="_blank" rel="noopener noreferrer" class="btn btn-primary instagram-btn">
+                        <span class="social-icon">📷</span>
+                        <span>View Giveaway Reel on Instagram</span>
+                    </a>
+                </div>
+                <div class="giveaway-tc">
+                    <h4>Terms & Conditions:</h4>
+                    <ul>
+                        <li>Follow our Instagram account @gudde.wala</li>
+                        <li>Like and comment on the giveaway reel</li>
+                        <li>The comment with the most likes wins 10% discount</li>
+                        <li>Discount valid only at our stall during Innovision 2025-26</li>
+                        <li>Winner will be announced on our Instagram story</li>
+                        <li>Discount cannot be combined with other offers</li>
+                        <li>Valid ID proof required for verification</li>
+                        <li>Decision of Guddewala team is final</li>
+                    </ul>
                 </div>
             </div>
         </div>
